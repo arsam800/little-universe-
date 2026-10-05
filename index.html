@@ -1,1860 +1,2790 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08070d" />
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+  <title>A Little Universe</title>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-html{
-    scroll-behavior:smooth;
-}
+  <style>
+    :root {
+      --bg: #08070d;
+      --bg-soft: #0e0b15;
+      --white: #f8f5fa;
+      --muted: #aaa1b2;
+      --pink: #e9a5c7;
+      --pink-soft: rgba(233, 165, 199, .14);
+      --purple: #a88bd1;
+      --line: rgba(255,255,255,.09);
+      --glass: rgba(18, 14, 25, .68);
+      --shadow: 0 25px 80px rgba(0,0,0,.35);
+    }
 
-body{
-    font-family:'Vazirmatn',sans-serif;
-    background:#02030a;
-    color:#f8eef5;
-    overflow-x:hidden;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* =========================
-   NIGHT SKY BACKGROUND
-========================= */
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-.sky{
-    position:fixed;
-    inset:0;
-    z-index:-10;
-    overflow:hidden;
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "Vazirmatn", sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-    background:
+    body.intro-locked {
+      overflow: hidden !important;
+      height: 100svh !important;
+      position: fixed;
+      width: 100%;
+      touch-action: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =====================================================
+       STAR FIELD
+    ===================================================== */
+
+    #space {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -5;
+      pointer-events: none;
+    }
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .atmosphere::before {
+      content: "";
+      position: absolute;
+      width: 65vw;
+      height: 65vw;
+      max-width: 750px;
+      max-height: 750px;
+      top: -25%;
+      right: -25%;
+      border-radius: 50%;
+      background: rgba(140, 86, 160, .09);
+      filter: blur(90px);
+    }
+
+    .atmosphere::after {
+      content: "";
+      position: absolute;
+      width: 55vw;
+      height: 55vw;
+      max-width: 600px;
+      max-height: 600px;
+      bottom: -25%;
+      left: -20%;
+      border-radius: 50%;
+      background: rgba(205, 105, 157, .07);
+      filter: blur(100px);
+    }
+
+    /* =====================================================
+       INTRO
+    ===================================================== */
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
         radial-gradient(
-            circle at 20% 15%,
-            rgba(104,77,151,.20),
-            transparent 30%
+          circle at 50% 35%,
+          rgba(174, 116, 190, .12),
+          transparent 35%
         ),
+        #08070d;
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
+    }
+
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-content {
+      width: min(100%, 430px);
+      text-align: center;
+    }
+
+    .intro-moon {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 35px;
+      border-radius: 50%;
+      position: relative;
+
+      background:
         radial-gradient(
-            circle at 82% 35%,
-            rgba(172,91,139,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(76,69,138,.16),
-            transparent 38%
-        ),
+          circle at 35% 30%,
+          #fff 0%,
+          #eee3f0 38%,
+          #b9a8bd 100%
+        );
+
+      box-shadow:
+        0 0 40px rgba(238, 206, 236, .16),
+        0 0 100px rgba(201, 124, 192, .08);
+    }
+
+    .intro-moon::after {
+      content: "";
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      top: -8px;
+      left: 25px;
+      border-radius: 50%;
+      background: #08070d;
+    }
+
+    .intro-small {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      direction: ltr;
+    }
+
+    .intro h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 12vw, 70px);
+      font-weight: 500;
+      direction: ltr;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .enter-btn {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.055);
+      color: white;
+      border-radius: 999px;
+      padding: 13px 26px;
+      cursor: pointer;
+      transition: .3s ease;
+      backdrop-filter: blur(12px);
+      font-size: 13px;
+    }
+
+    .enter-btn:hover {
+      background: rgba(233,165,199,.12);
+      border-color: rgba(233,165,199,.35);
+      transform: translateY(-2px);
+    }
+
+    .enter-btn:active {
+      transform: scale(.97);
+    }
+
+    /* =====================================================
+       SMALL MUSIC CONTROL
+    ===================================================== */
+
+    .music-control {
+      position: fixed;
+      left: 18px;
+      top: 18px;
+      width: 48px;
+      height: 48px;
+      z-index: 20;
+
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.12);
+
+      background: rgba(9,7,14,.55);
+      backdrop-filter: blur(14px);
+
+      cursor: pointer;
+
+      display: grid;
+      place-items: center;
+
+      color: white;
+
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.25);
+
+      transition:
+        transform .3s ease,
+        border-color .3s ease;
+    }
+
+    .music-control:hover {
+      transform: scale(1.06);
+      border-color: rgba(233,165,199,.3);
+    }
+
+    .music-moon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      position: relative;
+
+      background:
         linear-gradient(
-            180deg,
-            #02030a 0%,
-            #060712 48%,
-            #08060f 100%
-        );
-}
-
-/* stars */
-
-.stars,
-.stars2,
-.stars3{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-}
-
-.stars{
-    opacity:.75;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.95) 0 1px,
-            transparent 1.5px
-        ),
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.65) 0 1px,
-            transparent 1.5px
+          135deg,
+          #f5eaf4,
+          #bda8c3
         );
 
-    background-size:
-        97px 113px,
-        157px 181px;
-
-    background-position:
-        10px 20px,
-        50px 70px;
-}
-
-.stars2{
-    opacity:.45;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(178, 161, 237, 0.85) 0 1px,
-            transparent 1.6px
-        );
-
-    background-size:211px 197px;
-    background-position:90px 30px;
-}
-
-.stars3{
-    opacity:.28;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255,210,240,.85) 0 1px,
-            transparent 1.5px
-        );
-
-    background-size:277px 251px;
-    background-position:30px 100px;
-}
-
-/* moon */
-
-.moon{
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    top:7%;
-    left:9%;
-
-    border-radius:50%;
-
-    background:#f8f0dd;
-
-    opacity:.88;
-
-    box-shadow:
-        0 0 25px rgba(255,247,220,.24),
-        0 0 70px rgba(255,245,210,.10);
-}
-
-.moon::after{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    left:27px;
-    top:-9px;
-
-    border-radius:50%;
-
-    background:#02030a;
-}
-
-
-/* =========================
-   MAIN
-========================= */
-
-main{
-    width:100%;
-    max-width:760px;
-
-    margin:auto;
-
-    padding:
-        45px 16px
-        140px;
-}
-
-section{
-    margin-bottom:40px;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:78vh;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-}
-
-.small-label{
-    font-size:10px;
-    letter-spacing:4px;
-
-    color:#aaa0b0;
-
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-size:
-        clamp(32px,9vw,60px);
-
-    line-height:1.3;
-
-    font-weight:700;
-
-    background:
-        linear-gradient(
-            110deg,
-            #fff,
-            #e4cde0,
-            #c6bee8,
-            #fff
-        );
-
-    -webkit-background-clip:text;
-    color:transparent;
-}
-
-.hero-line{
-    width:70px;
-    height:1px;
-
-    margin:24px auto;
-
-    background:
-        rgba(255,255,255,.3);
-}
-
-.hero p{
-    font-size:13px;
-    line-height:2;
-
-    color:#c4b9c4;
-}
-
-
-/* =========================
-   TEXT CARD
-========================= */
-
-.text-card{
-    padding:21px 18px;
-
-    border-radius:22px;
-
-    border:
-        1px solid rgba(255,255,255,.09);
-
-    background:
-        rgba(255,255,255,.035);
-
-    box-shadow:
-        inset 0 1px rgba(255,255,255,.035),
-        0 20px 60px rgba(0,0,0,.15);
-}
-
-.text-card p{
-    font-size:13px;
-    line-height:2.15;
-
-    color:#eee5ec;
-}
-
-.separator{
-    text-align:center;
-
-    color:#a99aaa;
-
-    letter-spacing:5px;
-
-    font-size:12px;
-
-    margin:17px 0;
-}
-
-
-/* =========================
-   PASS
-========================= */
-
-.transition{
-    text-align:center;
-    padding:4px 0;
-}
-
-.transition span{
-    display:block;
-
-    font-size:20px;
-    line-height:1.75;
-
-    font-weight:700;
-}
-
-.transition span:nth-child(1){
-    color:#d7b7cd;
-}
-
-.transition span:nth-child(2){
-    color:#beb5d3;
-}
-
-.transition span:nth-child(3){
-    color:#e2c8d9;
-}
-
-.transition .separator{
-    margin-top:8px;
-}
-
-
-/* =========================
-   FEATURE BOX
-========================= */
-
-.feature-shell{
-    position:relative;
-
-    overflow:hidden;
-
-    border-radius:30px;
-
-    padding:
-        28px 14px
-        65px;
-
-    color:#342933;
-
-    background:
-        radial-gradient(
-            circle at 20% 8%,
-            rgba(255,255,255,.40),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(188,144,179,.17),
-            transparent 30%
-        ),
-        linear-gradient(
-            150deg,
-            #e9c9d8 0%,
-            #f2d9df 30%,
-            #f1e2d6 68%,
-            #eee8d9 100%
-        );
-
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.32),
-        inset 0 1px rgba(255,255,255,.7);
-}
-
-.feature-title{
-    text-align:center;
-
-    font-size:19px;
-
-    line-height:1.85;
-
-    font-weight:700;
-
-    margin-bottom:22px;
-}
-
-
-/* feature cards */
-
-.feature-list{
-    display:flex;
-    flex-direction:column;
-
-    gap:8px;
-}
-
-.feature{
-    padding:
-        10px 12px;
-
-    border-radius:14px;
-
-    background:
-        rgba(255,255,255,.36);
-
-    border:
-        1px solid rgba(92,60,79,.08);
-
-    font-size:12px;
-
-    line-height:1.9;
-
-    box-shadow:
-        0 7px 20px rgba(79,50,68,.06);
-}
-
-
-/* =========================
-   SPAM TEXT
-========================= */
-
-.spam-text{
-    margin-top:22px;
-
-    text-align:center;
-
-    font-size:12px;
-
-    line-height:2;
-
-    font-weight:600;
-
-    padding:
-        12px 10px;
-
-    border-radius:16px;
-
-    background:
-        rgba(255,255,255,.28);
-}
-
-
-/* =========================
-   LONG EMPTY PATH
-========================= */
-
-.long-path{
-    position:relative;
-
-    height:2200px;
-
-    margin-top:5px;
-
-    width:100%;
-}
-
-
-/*
-    فقط مسیر در این قسمت وجود دارد.
-    هیچ ویژگی‌ای وسط مسیر نیست.
-*/
-
-.path-svg{
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    overflow:visible;
-
-    pointer-events:none;
-}
-
-.path-line{
-    fill:none;
-
-    stroke:
-        url(#rainbowGradient);
-
-    stroke-width:3.5;
-
-    stroke-linecap:round;
-
-    stroke-dasharray:
-        11 10;
-
-    opacity:.82;
-
-    filter:
-        drop-shadow(
-            0 0 5px
-            rgba(205,160,215,.5)
-        );
-}
-
-
-/* arrow tip */
-
-.path-arrow{
-    fill:#d7a8c8;
-
-    filter:
-        drop-shadow(
-            0 0 5px
-            rgba(215,168,200,.45)
-        );
-}
-
-
-/* =========================
-   REMAINING FEATURES
-========================= */
-
-.remaining-features{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-}
-
-.remaining-features .feature{
-    opacity:0;
-
-    transform:
-        translateY(20px);
-
-    animation:
-        appear .8s ease forwards;
-}
-
-.remaining-features .feature:nth-child(1){animation-delay:.05s}
-.remaining-features .feature:nth-child(2){animation-delay:.10s}
-.remaining-features .feature:nth-child(3){animation-delay:.15s}
-.remaining-features .feature:nth-child(4){animation-delay:.20s}
-.remaining-features .feature:nth-child(5){animation-delay:.25s}
-.remaining-features .feature:nth-child(6){animation-delay:.30s}
-.remaining-features .feature:nth-child(7){animation-delay:.35s}
-.remaining-features .feature:nth-child(8){animation-delay:.40s}
-.remaining-features .feature:nth-child(9){animation-delay:.45s}
-.remaining-features .feature:nth-child(10){animation-delay:.50s}
-.remaining-features .feature:nth-child(11){animation-delay:.55s}
-.remaining-features .feature:nth-child(12){animation-delay:.60s}
-.remaining-features .feature:nth-child(13){animation-delay:.65s}
-.remaining-features .feature:nth-child(14){animation-delay:.70s}
-.remaining-features .feature:nth-child(15){animation-delay:.75s}
-.remaining-features .feature:nth-child(16){animation-delay:.80s}
-.remaining-features .feature:nth-child(17){animation-delay:.85s}
-
-
-/* =========================
-   MOVIE
-========================= */
-
-.movie-card{
-    padding:
-        27px 19px;
-
-    border-radius:24px;
-
-    text-align:center;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(235,201,220,.09),
-            rgba(190,181,220,.07)
-        );
-}
-
-.movie-card h2{
-    font-size:25px;
-
-    margin-bottom:12px;
-}
-
-.movie-card p{
-    font-size:13px;
-
-    color:#d5cbd4;
-
-    line-height:2.1;
-}
-
-
-/* =========================
-   END
-========================= */
-
-.ending{
-    text-align:center;
-
-    padding:
-        28px 10px
-        15px;
-}
-
-.ending-text{
-    font-size:13px;
-
-    color:#ded2dc;
-
-    line-height:2.25;
-}
-
-.ending-main{
-    margin-top:32px;
-
-    font-size:
-        clamp(27px,7vw,45px);
-
-    font-weight:700;
-
-    background:
-        linear-gradient(
-            120deg,
-            #fff,
-            #e9c9df,
-            #cfc4ea,
-            #fff
-        );
-
-    -webkit-background-clip:text;
-
-    color:transparent;
-}
-
-.ending-sub{
-    margin-top:9px;
-
-    direction:ltr;
-
-    font-family:Georgia,serif;
-
-    font-size:17px;
-
-    line-height:1.8;
-
-    color:#e7dce4;
-}
-
-
-/* =========================
-   GALLERY
-========================= */
-
-.gallery{
-    text-align:center;
-}
-
-.gallery-title{
-    font-size:19px;
-
-    margin-bottom:17px;
-}
-
-.gallery-frame{
-    position:relative;
-
-    width:100%;
-
-    aspect-ratio:4/5;
-
-    overflow:hidden;
-
-    border-radius:25px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.30);
-}
-
-.gallery-frame img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:
-        transform .45s ease,
-        opacity .45s ease;
-}
-
-.gallery-controls{
-    display:flex;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:13px;
-}
-
-.gallery-controls button{
-    border:
-        1px solid rgba(255,255,255,.14);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color:#eee;
-
-    border-radius:50px;
-
-    padding:
-        9px 17px;
-
-    font-family:inherit;
-
-    cursor:pointer;
-}
-
-.gallery-dots{
-    display:flex;
-
-    justify-content:center;
-
-    gap:6px;
-
-    margin-top:12px;
-}
-
-.dot{
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.25);
-}
-
-.dot.active{
-    width:17px;
-
-    border-radius:10px;
-
-    background:#e4c8dc;
-}
-
-
-/* =========================
-   REVEAL
-========================= */
-
-.reveal{
-    opacity:0;
-
-    transform:
-        translateY(22px);
-
-    transition:
+      overflow: hidden;
+    }
+
+    .music-moon::after {
+      content: "";
+      position: absolute;
+      width: 23px;
+      height: 23px;
+      top: -4px;
+      left: 7px;
+      border-radius: 50%;
+      background: #100c15;
+      transition: .35s ease;
+    }
+
+    .music-control.playing .music-moon::after {
+      left: 13px;
+    }
+
+    .music-symbol {
+      position: absolute;
+      z-index: 2;
+      font-size: 10px;
+      opacity: .9;
+    }
+
+    /* =====================================================
+       GENERAL
+    ===================================================== */
+
+    main {
+      position: relative;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 0 18px 80px;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition:
         opacity .8s ease,
         transform .8s ease;
-}
+    }
 
-.reveal.visible{
-    opacity:1;
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    transform:none;
-}
+    /* =====================================================
+       HERO
+    ===================================================== */
 
+    .hero {
+      min-height: 100svh;
 
-/* =========================
-   MUSIC BAR
-========================= */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-.music-bar{
-    position:fixed;
+      text-align: center;
 
-    z-index:1000;
+      padding: 80px 0 60px;
+    }
 
-    left:50%;
-    bottom:13px;
+    .hero-moon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
 
-    transform:
-        translateX(-50%);
+      background:
+        radial-gradient(
+          circle at 32% 30%,
+          #fff 0%,
+          #e8dfe9 42%,
+          #a99bad 100%
+        );
 
-    width:min(92%,470px);
+      margin-bottom: 32px;
 
-    padding:
-        9px 13px;
+      position: relative;
 
-    border:
+      box-shadow:
+        0 0 40px rgba(240,220,240,.14),
+        0 0 120px rgba(180,110,180,.08);
+    }
+
+    .hero-moon::after {
+      content: "";
+      position: absolute;
+
+      width: 75px;
+      height: 75px;
+
+      border-radius: 50%;
+
+      background: var(--bg);
+
+      top: -5px;
+      left: 22px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+
+      font-size:
+        clamp(48px, 15vw, 100px);
+
+      font-weight: 400;
+
+      direction: ltr;
+
+      line-height: .95;
+
+      letter-spacing: -2px;
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 28px;
+
+      color: #77717d;
+
+      font-size: 10px;
+      letter-spacing: 2px;
+
+      direction: ltr;
+
+      animation:
+        scrollFloat 2.4s ease-in-out infinite;
+    }
+
+    @keyframes scrollFloat {
+      0%,100% {
+        transform: translateY(0);
+        opacity: .55;
+      }
+
+      50% {
+        transform: translateY(5px);
+        opacity: 1;
+      }
+    }
+
+    /* =====================================================
+       STORY
+    ===================================================== */
+
+    .story {
+      padding: 40px 0 100px;
+    }
+
+    .story-card {
+      position: relative;
+
+      border-radius: 30px;
+
+      padding: 28px 23px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.065),
+          rgba(255,255,255,.025)
+        );
+
+      border: 1px solid rgba(255,255,255,.075);
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+      height: 170px;
+
+      border-radius: 50%;
+
+      top: -90px;
+      left: -70px;
+
+      background:
+        rgba(214,126,181,.10);
+
+      filter: blur(25px);
+    }
+
+    .story-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 130px;
+      height: 130px;
+
+      border-radius: 50%;
+
+      bottom: -90px;
+      right: -60px;
+
+      background:
+        rgba(168,139,209,.08);
+
+      filter: blur(25px);
+    }
+
+    .story-card p {
+      position: relative;
+      z-index: 1;
+
+      color: #ddd6df;
+
+      font-size: 14px;
+      line-height: 2.25;
+    }
+
+    .story-card .break {
+      display: block;
+      height: 16px;
+    }
+
+    /* =====================================================
+       PASSAGE
+    ===================================================== */
+
+    .passage {
+      padding: 5px 0 100px;
+      text-align: center;
+    }
+
+    .passage span {
+      display: block;
+
+      margin: 10px 0;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 21px;
+
+      direction: ltr;
+    }
+
+    .passage span:nth-child(1) {
+      color: #bba8c2;
+    }
+
+    .passage span:nth-child(2) {
+      color: #d8b7ce;
+    }
+
+    .passage span:nth-child(3) {
+      color: #e9a5c7;
+    }
+
+    .passage span:last-child {
+      font-family: "Vazirmatn", sans-serif;
+
+      font-size: 14px;
+
+      color: #bcb3bf;
+
+      margin-top: 20px;
+    }
+
+    /* =====================================================
+       FEATURES
+    ===================================================== */
+
+    .features {
+      padding: 10px 0 110px;
+    }
+
+    .feature-flow {
+      position: relative;
+
+      border-radius: 34px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(217,126,179,.13),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.018)
+        );
+
+      border: 1px solid rgba(255,255,255,.07);
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.28);
+    }
+
+    .feature-intro {
+      position: relative;
+
+      text-align: center;
+
+      padding: 42px 22px 46px;
+    }
+
+    .feature-intro::after {
+      content: "";
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 12%;
+      right: 12%;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(233,165,199,.35),
+          transparent
+        );
+    }
+
+    .feature-intro .tiny {
+      color: #918894;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      direction: ltr;
+
+      margin-bottom: 15px;
+    }
+
+    .feature-intro .big {
+      font-size:
+        clamp(22px, 6vw, 30px);
+
+      line-height: 1.7;
+
+      color: #f4edf4;
+    }
+
+    .feature-intro .accent {
+      color: var(--pink);
+    }
+
+    .feature-list {
+      padding: 28px 21px 0;
+    }
+
+    .feature {
+      position: relative;
+
+      padding: 9px 2px;
+
+      color: #d4ccd7;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+
+      transition:
+        color .3s ease,
+        transform .3s ease;
+    }
+
+    .feature:hover {
+      color: #fff;
+
+      transform:
+        translateX(-3px);
+    }
+
+    .feature::first-letter {
+      color: var(--pink);
+    }
+
+    .feature-close {
+      text-align: center;
+
+      padding:
+        38px 20px 42px;
+
+      color: var(--pink);
+
+      font-size: 18px;
+
+      position: relative;
+    }
+
+    .feature-close::before {
+      content: "✦";
+
+      display: block;
+
+      color: rgba(233,165,199,.5);
+
+      font-size: 10px;
+
+      margin-bottom: 15px;
+    }
+
+    /* =====================================================
+       ENOLA / FINAL TEXT
+    ===================================================== */
+
+    .enola {
+      padding: 10px 0 100px;
+    }
+
+    .enola-wrap {
+      position: relative;
+
+      text-align: center;
+
+      padding: 80px 20px;
+
+      overflow: hidden;
+
+      border-radius: 36px;
+
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          rgba(177,117,180,.14),
+          transparent 48%
+        );
+    }
+
+    .enola-wrap::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 15px;
+
+      border-radius: 30px;
+
+      border:
+        1px solid rgba(233,165,199,.08);
+
+      pointer-events: none;
+    }
+
+    .enola-wrap::after {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(233,165,199,.08);
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      animation:
+        enolaOrbit 12s linear infinite;
+    }
+
+    @keyframes enolaOrbit {
+      from {
+        transform:
+          translate(-50%, -50%)
+          rotate(0deg)
+          scale(1);
+      }
+
+      50% {
+        transform:
+          translate(-50%, -50%)
+          rotate(180deg)
+          scale(1.04);
+      }
+
+      to {
+        transform:
+          translate(-50%, -50%)
+          rotate(360deg)
+          scale(1);
+      }
+    }
+
+    .enola-stars {
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .6;
+    }
+
+    .enola-stars span {
+      position: absolute;
+
+      width: 3px;
+      height: 3px;
+
+      border-radius: 50%;
+
+      background: #fff;
+
+      box-shadow:
+        0 0 9px rgba(255,255,255,.5);
+
+      animation:
+        twinkle 3s infinite ease-in-out;
+    }
+
+    .enola-stars span:nth-child(1) {
+      top: 17%;
+      left: 18%;
+    }
+
+    .enola-stars span:nth-child(2) {
+      top: 28%;
+      right: 16%;
+      animation-delay: .8s;
+    }
+
+    .enola-stars span:nth-child(3) {
+      top: 65%;
+      left: 12%;
+      animation-delay: 1.4s;
+    }
+
+    .enola-stars span:nth-child(4) {
+      top: 73%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+
+    .enola-stars span:nth-child(5) {
+      top: 45%;
+      left: 7%;
+      animation-delay: .4s;
+    }
+
+    @keyframes twinkle {
+      0%,100% {
+        opacity: .25;
+        transform: scale(.7);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.25);
+      }
+    }
+
+    .enola-title {
+      position: relative;
+      z-index: 2;
+
+      width: min(100%, 560px);
+
+      margin: 0 auto 22px;
+
+      color: #eee7ef;
+
+      font-family: "Vazirmatn", sans-serif;
+
+      font-size:
+        clamp(18px, 4.8vw, 27px);
+
+      font-weight: 400;
+
+      line-height: 2.05;
+
+      letter-spacing: 0;
+
+      text-align: center;
+
+      direction: rtl;
+
+      text-wrap: balance;
+    }
+
+    .enola-title .enola-highlight {
+      color: #e9a5c7;
+    }
+
+    .enola-line {
+      position: relative;
+      z-index: 2;
+
+      width: 55px;
+      height: 1px;
+
+      margin: 0 auto 25px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--pink),
+          transparent
+        );
+    }
+
+    .enola p {
+      position: relative;
+      z-index: 2;
+
+      color: #aaa1af;
+
+      font-size: 12px;
+
+      line-height: 2;
+    }
+
+    /* =====================================================
+       GALLERY
+    ===================================================== */
+
+    .gallery {
+      padding: 0 0 35px;
+    }
+
+    .gallery-heading {
+      text-align: center;
+
+      margin-bottom: 30px;
+    }
+
+    .gallery-heading h2 {
+      font-family: "Playfair Display", serif;
+
+      font-size: 30px;
+
+      font-weight: 400;
+
+      direction: ltr;
+    }
+
+    .gallery-heading p {
+      color: #817985;
+
+      font-size: 11px;
+
+      margin-top: 8px;
+    }
+
+    .gallery-box {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border-radius: 30px;
+
+      background: #100d15;
+
+      border:
+        1px solid rgba(255,255,255,.07);
+
+      box-shadow: var(--shadow);
+
+      touch-action: pan-y;
+    }
+
+    .gallery-track {
+      display: flex;
+
+      direction: ltr;
+
+      transition:
+        transform .55s
+        cubic-bezier(.22,.61,.36,1);
+    }
+
+    .photo {
+      min-width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: #111;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      user-select: none;
+
+      -webkit-user-drag: none;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      width: 40px;
+      height: 40px;
+
+      border-radius: 50%;
+
+      border:
         1px solid rgba(255,255,255,.12);
 
-    border-radius:22px;
+      background:
+        rgba(8,7,13,.42);
 
-    background:
-        rgba(10,9,17,.78);
+      backdrop-filter: blur(10px);
 
-    backdrop-filter:
-        blur(18px);
+      color: white;
 
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.4);
+      cursor: pointer;
 
-    display:flex;
+      z-index: 3;
 
-    align-items:center;
+      font-size: 18px;
 
-    gap:10px;
-}
+      transition:
+        background .3s ease,
+        transform .3s ease;
+    }
 
-.music-disc{
-    width:36px;
-    height:36px;
+    .gallery-arrow:hover {
+      background:
+        rgba(233,165,199,.12);
 
-    flex:none;
+      transform:
+        translateY(-50%)
+        scale(1.05);
+    }
 
-    border-radius:50%;
+    .gallery-prev {
+      left: 12px;
+    }
 
-    border:
-        1px solid rgba(255,255,255,.2);
+    .gallery-next {
+      right: 12px;
+    }
 
-    display:flex;
+    .dots {
+      display: flex;
 
-    align-items:center;
-    justify-content:center;
+      justify-content: center;
 
-    font-size:17px;
-}
+      gap: 7px;
 
-.music-info{
-    flex:1;
+      direction: ltr;
 
-    min-width:0;
-}
+      margin-top: 18px;
+    }
 
-.music-title{
-    font-size:11px;
+    .dot {
+      width: 5px;
+      height: 5px;
 
-    color:#fff;
+      border-radius: 50%;
 
-    white-space:nowrap;
+      background: #554d58;
 
-    overflow:hidden;
+      transition: .3s ease;
 
-    text-overflow:ellipsis;
-}
+      cursor: pointer;
+    }
 
-.music-artist{
-    font-size:9px;
+    .dot.active {
+      width: 18px;
 
-    color:#aaa0aa;
+      border-radius: 99px;
 
-    margin-top:2px;
-}
+      background: var(--pink);
+    }
 
-.music-line{
-    height:2px;
+    /* =====================================================
+       MUSIC BOX
+    ===================================================== */
 
-    width:100%;
+    .music-section {
+      padding:
+        35px 0 75px;
+    }
 
-    margin-top:6px;
+    .music-box {
+      position: relative;
 
-    background:
-        rgba(255,255,255,.13);
+      min-height: 165px;
 
-    border-radius:5px;
+      border-radius: 30px;
 
-    overflow:hidden;
-}
+      border:
+        1px solid rgba(255,255,255,.075);
 
-.music-progress{
-    width:0%;
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(220,131,184,.12),
+          transparent 48%
+        ),
+        rgba(16,12,22,.72);
 
-    height:100%;
+      backdrop-filter: blur(16px);
 
-    background:
+      overflow: hidden;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 22px;
+
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.3);
+    }
+
+    .music-box::before {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(233,165,199,.07);
+
+      animation:
+        orbit 14s linear infinite;
+    }
+
+    .music-box::after {
+      content: "";
+
+      position: absolute;
+
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(168,139,209,.07);
+
+      animation:
+        orbitReverse 10s linear infinite;
+    }
+
+    @keyframes orbit {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes orbitReverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    .music-center {
+      position: relative;
+
+      z-index: 2;
+
+      width: 72px;
+      height: 72px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      background:
+        rgba(255,255,255,.055);
+
+      color: white;
+
+      cursor: pointer;
+
+      display: grid;
+
+      place-items: center;
+
+      transition:
+        transform .3s ease,
+        background .3s ease;
+    }
+
+    .music-center:hover {
+      transform: scale(1.06);
+
+      background:
+        rgba(233,165,199,.09);
+    }
+
+    .music-center:active {
+      transform: scale(.97);
+    }
+
+    .music-center .moon {
+      width: 32px;
+      height: 32px;
+
+      border-radius: 50%;
+
+      background:
         linear-gradient(
-            90deg,
-            #d8a1c8,
-            #b9a7e8,
-            #d7c1dd
+          135deg,
+          #f9eef7,
+          #ad99b5
         );
-}
 
+      position: relative;
 
-/* =========================
-   ANIMATION
-========================= */
+      overflow: hidden;
 
-@keyframes appear{
-
-    to{
-        opacity:1;
-        transform:none;
+      box-shadow:
+        0 0 25px rgba(239,210,236,.13);
     }
 
-}
+    .music-center .moon::after {
+      content: "";
 
+      position: absolute;
 
-/* =========================
-   MOBILE
-========================= */
+      width: 31px;
+      height: 31px;
 
-@media(max-width:520px){
+      top: -5px;
+      left: 9px;
 
-    main{
-        padding-left:13px;
-        padding-right:13px;
+      border-radius: 50%;
+
+      background: #17111c;
+
+      transition: .4s ease;
     }
 
-    .hero{
-        min-height:75vh;
+    .music-center.playing .moon::after {
+      left: 17px;
     }
 
-    .moon{
-        width:78px;
-        height:78px;
+    .music-play-icon {
+      position: absolute;
 
-        left:8%;
-        top:8%;
+      z-index: 4;
+
+      font-size: 9px;
+
+      color: #17111c;
+
+      transform:
+        translateX(1px);
     }
 
-    .moon::after{
-        width:78px;
-        height:78px;
+    .music-progress {
+      position: relative;
 
-        left:21px;
-        top:-7px;
+      z-index: 3;
+
+      width:
+        min(72%, 330px);
+
+      height: 4px;
+
+      border-radius: 99px;
+
+      background:
+        rgba(255,255,255,.09);
+
+      overflow: hidden;
+
+      cursor: pointer;
     }
 
-    .text-card{
+    .music-progress-fill {
+      width: 0%;
+
+      height: 100%;
+
+      border-radius: inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(168,139,209,.7),
+          rgba(233,165,199,.95)
+        );
+
+      box-shadow:
+        0 0 12px rgba(233,165,199,.25);
+
+      transition:
+        width .15s linear;
+    }
+
+    /* =====================================================
+       ENDING
+    ===================================================== */
+
+    .ending {
+      padding:
+        20px 0 40px;
+
+      text-align: center;
+    }
+
+    .ending-line {
+      width: 70px;
+      height: 1px;
+
+      margin:
+        0 auto 28px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(233,165,199,.5),
+          transparent
+        );
+    }
+
+    .ending p {
+      color: #a9a0ad;
+
+      font-size: 13px;
+
+      line-height: 2.3;
+    }
+
+    .ending strong {
+      display: block;
+
+      margin-top: 9px;
+
+      color: #e7c5dc;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      direction: ltr;
+
+      font-size: 21px;
+
+      font-weight: 400;
+    }
+
+    .footer-star {
+      margin-top: 30px;
+
+      color:
+        rgba(233,165,199,.5);
+
+      font-size: 12px;
+    }
+
+    /* =====================================================
+       DESKTOP
+    ===================================================== */
+
+    @media (min-width: 700px) {
+
+      main {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .story-card {
         padding:
-            18px 15px;
+          42px 45px;
+      }
+
+      .feature-list {
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+
+      .photo {
+        aspect-ratio: 16 / 10;
+      }
+
+      .gallery-box {
+        border-radius: 34px;
+      }
     }
 
-    .text-card p{
-        font-size:12.2px;
-        line-height:2.1;
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 480px) {
+
+      main {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .story {
+        padding-top: 25px;
+      }
+
+      .story-card {
+        border-radius: 26px;
+        padding:
+          24px 19px;
+      }
+
+      .story-card p {
+        font-size: 13.5px;
+        line-height: 2.3;
+      }
+
+      .feature-flow {
+        border-radius: 28px;
+      }
+
+      .feature-intro {
+        padding:
+          35px 18px 38px;
+      }
+
+      .feature-list {
+        padding:
+          23px 18px 0;
+      }
+
+      .feature {
+        font-size: 13.5px;
+        line-height: 2;
+      }
+
+      .enola-wrap {
+        padding:
+          70px 18px;
+      }
+
+      .enola-title {
+        width: 100%;
+        padding: 0 10px;
+
+        font-size: 17px;
+        line-height: 2.15;
+      }
+
+      .music-box {
+        min-height: 150px;
+      }
+
+      .gallery-arrow {
+        width: 36px;
+        height: 36px;
+      }
     }
 
-    .feature-shell{
-        padding-left:11px;
-        padding-right:11px;
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
 
-        border-radius:27px;
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
     }
-
-    .feature{
-        font-size:11.5px;
-    }
-
-    /*
-       مسیر عمداً بسیار طولانی است.
-       روی موبایل حدود 3 تا 4 بار
-       اسکرول قبل از ویژگی‌های بعدی.
-    */
-
-    .long-path{
-        height:2200px;
-    }
-
-    .path-svg{
-        height:2200px;
-    }
-
-}
-
-
-/* desktop */
-
-@media(min-width:900px){
-
-    .feature-shell{
-        padding-left:28px;
-        padding-right:28px;
-    }
-
-}
-</style>
+  </style>
 </head>
 
+<body class="intro-locked">
 
-<body>
+  <!-- =====================================================
+       STAR FIELD
+  ===================================================== -->
 
-<!-- NIGHT SKY -->
+  <canvas id="space"></canvas>
 
-<div class="sky">
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
-    <div class="moon"></div>
-</div>
+  <div class="atmosphere"></div>
 
 
-<!-- MUSIC -->
+  <!-- =====================================================
+       INTRO
+  ===================================================== -->
 
-<audio id="birthdaySong">
-    <source
-        src="birthday-song.mp3"
-        type="audio/mpeg"
+  <div class="intro" id="intro">
+
+    <div class="intro-content">
+
+      <div class="intro-moon"></div>
+
+      <div class="intro-small">
+        A LITTLE UNIVERSE
+      </div>
+
+      <h1>
+        its your Birthday
+      </h1>
+
+      <button
+        class="enter-btn"
+        id="enterBtn"
+      >
+        ✨ LETS GO ✨
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       SMALL MUSIC CONTROL
+  ===================================================== -->
+
+  <button
+    class="music-control"
+    id="musicControl"
+    aria-label="پخش یا توقف موسیقی"
+  >
+
+    <div class="music-moon"></div>
+
+    <span
+      class="music-symbol"
+      id="musicSymbol"
     >
-</audio>
+      ▶
+    </span>
+
+  </button>
 
 
-<div class="music-bar">
-
-    <div class="music-disc">
-        ♫
-    </div>
-
-    <div class="music-info">
-
-        <div class="music-title">
-            The One That Got Away
-        </div>
-
-        <div class="music-artist">
-            Katy Perry
-        </div>
-
-        <div class="music-line">
-            <div
-                class="music-progress"
-                id="musicProgress"
-            ></div>
-        </div>
-
-    </div>
-
-</div>
+  <audio
+    id="audio"
+    src="birthday-song.mp3"
+    preload="auto"
+  ></audio>
 
 
-<main>
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
+  <main>
 
 
-<!-- =========================
-     HERO
-========================= -->
+    <!-- ===================================================
+         HERO
+    =================================================== -->
 
-<section class="hero reveal">
+    <section class="hero">
 
-    <div class="small-label">
-        ONE PARTICULAR DAY
-    </div>
+      <div class="hero-moon reveal"></div>
 
-    <h1>
+      <h1 class="reveal">
         Happy Birthday
-    </h1>
+      </h1>
 
-    <div class="hero-line"></div>
+      <p class="hero-sub reveal"></p>
 
-    <p>
-        امروز یه روز معمولی نیست.
-    </p>
+      <div class="scroll-note">
+        SCROLL ↓
+      </div>
 
-</section>
-
-
-<!-- =========================
-     ORIGINAL TEXT
-========================= -->
-
-<section class="text-card reveal">
-
-<p>
-
-امروز تنها روز ساله که تولد تنها همکارمه🥷
-
-<br>
-
-از سرنوشت ممنونم که همچین همکاریو اورد تو زندگیم که باعث شد انقد خاطره های خوبی که فقط خودمون میفهمیمشون بسازیم❤️
-انقد فیلم ببینیمو تو یونیورس هاشون زندگی کنیم🧑‍🦽
-انقد حرف بزنیم🗣
-اون پلی لیست شاهکارو درست کنیم❤️‍🔥
-نقاشی بکشیم🧽⭐️
-به گربه چیپس بدیم🫏
-بگیم بخندیمو اون عکسای خفنو بگیریم🤳🦧
-
-</p>
+    </section>
 
 
-<div class="separator">
-🚥
-</div>
+    <!-- ===================================================
+         STORY
+    =================================================== -->
+
+    <section class="story">
+
+      <div class="story-card reveal">
+
+        <p>
+
+          امروز تنها روز ساله که تولد تنها همکارمه🥷
+          <br>
+
+          از سرنوشت ممنونم که همچین همکاریو اورد تو زندگیم
+          که باعث شد انقد خاطره های خوبی که فقط خودمون
+          میفهمیمشون بسازیم❤️
+          <br>
+
+          انقد فیلم ببینیمو تو یونیورس هاشون زندگی کنیم🧑‍🦽
+          <br>
+
+          انقد حرف بزنیم🗣
+          <br>
+
+          اون پلی لیست شاهکارو درست کنیم❤️‍🔥
+          <br>
+
+          نقاشی بکشیم🧽⭐️
+          <br>
+
+          به گربه چیپس بدیم🫏
+          <br>
+
+          بگیم بخندیمو اون عکسای خفنو بگیریم🤳🦧
+
+          <span class="break"></span>
+
+          امیدوارم امسال از اون سالایی بشه
+          که وقتی چند سال دیگه بهش فکر میکنی
+          کلی خاطره خوب ازش یادت بیاد
+
+          <span class="break"></span>
+
+          میدونم ری اکتت الان چیه
+          اگه ادامه بدم همینو می‌رسیم به اونجا
+          که میگن ایشالا صد سال زندگی کنی
+          با هزار تا استیکر😍
+          <br>
+
+          به هرچی میخوای برسیو همینا که فامیلاو دوستا
+          برا تبریک تولد میگن
+          <br>
+
+          که منم ۳ روز دیگه درگیرشم🖤
+
+        </p>
+
+      </div>
+
+    </section>
 
 
-<p>
+    <!-- ===================================================
+         PASSAGE
+    =================================================== -->
 
-امیدوارم امسال از اون سالایی بشه برات که وقتی چند سال دیگه بهش فکر میکنی کلی خاطره خوب ازش یادت بیاد
+    <section class="passage reveal">
 
-<br><br>
+      <span>
+        but today is your day
+      </span>
 
-میدونم ری اکتت الان چیه اگه ادامه بدم همینو می‌رسیم به اونجا که میگن ایشالا صد سال زندگی کنی با هزار تا استیکر😍
-به هرچی میخوای برسیو همینا که فامیلاو دوستا برا تبریک تولد میگن که منم ۳ روز دیگه درگیرشم🖤
+      <span></span>
 
-</p>
+      <span>
+        Anywayyy
+      </span>
 
-</section>
-
-
-<!-- =========================
-     PASSS
-========================= -->
-
-<section class="transition reveal">
-
-    <span>Passs</span>
-
-    <span>متوجهم</span>
-
-    <span>Anywayyy</span>
-
-    <div class="separator">
+      <span>
         ما میریم سراغ کار خودمون
-    </div>
+      </span>
 
-</section>
+    </section>
 
 
-<!-- =========================
-     FEATURES
-========================= -->
+    <!-- ===================================================
+         FEATURES
+    =================================================== -->
 
-<section class="feature-shell reveal">
+    <section class="features">
 
+      <div class="feature-flow reveal">
 
-<div class="feature-title">
 
-افتخار میدید
-<br>
-به مناسبت
-<br>
-تنها شبی که
-<br>
-تولد
-<br>
-بهترین شاگردم
-<br>
-و تنها همکارم
-<br>
-که
+        <div class="feature-intro">
 
-</div>
+          <div class="tiny">
+            یه چیز کوچیک قبلش
+          </div>
 
+          <div class="big">
 
-<!-- FIRST FEATURES -->
+            افتخار میدید<br>
 
-<div class="feature-list">
+            به مناسبت<br>
 
-    <div class="feature">
-        ✓ خیلی خوشگله
-    </div>
+            تنها شبی که<br>
 
-    <div class="feature">
-        ✓ استایلش خاصه
-    </div>
+            <span class="accent">
+              تولد
+            </span><br>
 
-    <div class="feature">
-        ✓ پر انرژیه بعضی وقتام جنازه
-    </div>
+            بهترین شاگردم<br>
 
-    <div class="feature">
-        ✓ بتمنه نمیخوابه
-    </div>
+            و تنها همکارم<br>
 
-    <div class="feature">
-        ✓ پایه عشقوحاله
-    </div>
+            که...
 
-    <div class="feature">
-        ✓ به شدت قویه درحد بلند کردن گونی هم وزن خودش
-    </div>
+          </div>
 
-    <div class="feature">
-        ✓ بک‌های تخریب کننده میده
-    </div>
+        </div>
 
-    <div class="feature">
-        ✓ باهوشه
-    </div>
 
-    <div class="feature">
-        ✓ دوست داشتنیه
-    </div>
+        <div class="feature-list">
 
-    <div class="feature">
-        ✓ پرروم هست
-    </div>
+          <div class="feature">
+            ✓ خیلی خوشگله
+          </div>
 
-    <div class="feature">
-        ✓ خوراک دیوونه بازیه
-    </div>
+          <div class="feature">
+            ✓ استایلش خاصه
+          </div>
 
-    <div class="feature">
-        ✓ شریک جرممه
-    </div>
+          <div class="feature">
+            ✓ پر انرژیه بعضی وقتام جنازه
+          </div>
 
-</div>
+          <div class="feature">
+            ✓ بتمنه نمیخوابه
+          </div>
 
+          <div class="feature">
+            ✓ پایه عشقوحاله
+          </div>
 
-<!-- SPAM TEXT -->
+          <div class="feature">
+            ✓ به شدت قویه درحد بلند کردن گونی هم وزن خودش
+          </div>
 
-<div class="spam-text">
+          <div class="feature">
+            ✓ بک‌های تخریب کننده میده
+          </div>
 
-✓ ی گیف خطرناکو اسپم میده
-<br>
-(همینجا انتقام اون ۴۳۸ تا اسپمو میگیرم ازت)
+          <div class="feature">
+            ✓ باهوشه
+          </div>
 
-</div>
+          <div class="feature">
+            ✓ دوست داشتنیه
+          </div>
 
+          <div class="feature">
+            ✓ پرروم هست
+          </div>
 
-<!-- =========================
-     EMPTY LONG PATH
-========================= -->
+          <div class="feature">
+            ✓ خوراک دیوونه بازیه
+          </div>
 
-<div class="long-path">
-
-<svg
-    class="path-svg"
-    viewBox="0 0 500 2200"
-    preserveAspectRatio="none"
->
-
-<defs>
-
-<linearGradient
-    id="rainbowGradient"
-    x1="0%"
-    y1="0%"
-    x2="100%"
-    y2="100%"
->
+          <div class="feature">
+            ✓ شریک جرممه
+          </div>
 
-    <stop
-        offset="0%"
-        stop-color="#d28abb"
-    />
+          <div class="feature">
+            ✓ ی گیف خطرناکو اسپم میده
+          </div>
 
-    <stop
-        offset="20%"
-        stop-color="#a993d5"
-    />
+          <div class="feature">
+            ✓ خلاف کاره
+          </div>
 
-    <stop
-        offset="42%"
-        stop-color="#82a9d5"
-    />
+          <div class="feature">
+            ✓ شنا بلده میخوایم مسابقه بزاریم شمال🏊‍♂️
+          </div>
 
-    <stop
-        offset="65%"
-        stop-color="#c49dcc"
-    />
+          <div class="feature">
+            ✓ نقاشیش تو اینستا شاهکاره
+          </div>
 
-    <stop
-        offset="85%"
-        stop-color="#dfa5bd"
-    />
+          <div class="feature">
+            ✓ فرق عقابو روحو تشخیص نمیده
+          </div>
 
-    <stop
-        offset="100%"
-        stop-color="#e8c2c9"
-    />
+          <div class="feature">
+            ✓ غیرقابل‌پیش‌بینی
+          </div>
 
-</linearGradient>
+          <div class="feature">
+            ✓ غیبت باهاش حال میده
+          </div>
 
-</defs>
+          <div class="feature">
+            ✓ اگه بشینه پای بحث تا صب میتونی باهاش حرف بزنی
+          </div>
 
+          <div class="feature">
+            ✓ شب زنده داره نمیخوابه شمال میخوایم ی شب بریم دریا تا صب بشینیم
+          </div>
 
-<!--
-    مسیر از دقیقاً زیر متن اسپم شروع می‌شود.
-    در این قسمت هیچ feature دیگری وجود ندارد.
--->
+          <div class="feature">
+            ✓ sweater weather رو دوست داره
+          </div>
 
-<path
-    class="path-line"
-    d="
-        M250 0
+          <div class="feature">
+            ✓ پایه فیلمه چند سال دیگه قراره شبا باهم کلی فیلم ببینیم اگه افتخار بده البته
+          </div>
 
-        C250 100
-        95 135
-        105 280
+          <div class="feature">
+            ✓ صلیقش خیلی خوبه
+          </div>
 
-        C115 425
-        405 380
-        395 545
+          <div class="feature">
+            ✓ درمورد ویلا تخت ۲ نفره دار نظری نداره
+          </div>
 
-        C385 700
-        90 650
-        105 820
+          <div class="feature">
+            ✓ باهم ی پلی لیست ساختیم تو دنیا پیدا نمیشه
+          </div>
 
-        C120 990
-        415 930
-        395 1100
+          <div class="feature">
+            ✓ قدش خوراک دست انداختن رو شونشه ولی فکنم برای بقل یا بوسیدنش کمر درد میشی که اگه باهات اوکی باشه کی اصن به کمر درده فک میکنه
+          </div>
 
-        C375 1270
-        90 1210
-        105 1390
+          <div class="feature">
+            ✓ تو کل دنیا شبیهشم پیدا نمیکنی
+          </div>
 
-        C120 1570
-        415 1500
-        395 1680
+          <div class="feature">
+            ✓ همه ام دوستش دارن
+          </div>
 
-        C375 1850
-        120 1790
-        250 2190
-    "
-/>
+        </div>
 
 
-<!-- arrow head at the end -->
+        <div class="feature-close">
+          هست🎂
+        </div>
 
-<polygon
-    class="path-arrow"
-    points="
-        250,2200
-        238,2172
-        250,2182
-        262,2172
-    "
-/>
+      </div>
 
-</svg>
+    </section>
 
-</div>
 
+    <!-- ===================================================
+         ENOLA
+    =================================================== -->
 
-<!-- =========================
-     REMAINING FEATURES
-========================= -->
+    <section class="enola">
 
-<div class="remaining-features">
+      <div class="enola-wrap reveal">
 
-    <div class="feature">
-        ✓ خلاف کاره
-    </div>
+        <div class="enola-stars">
 
-    <div class="feature">
-        ✓ شنا بلده میخوایم مسابقه بزاریم شمال🏊‍♂️
-    </div>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
 
-    <div class="feature">
-        ✓ نقاشیش تو اینستا شاهکاره
-    </div>
+        </div>
 
-    <div class="feature">
-        ✓ فرق عقابو روحو تشخیص نمیده
-    </div>
+        <div class="enola-title">
+          امشب فیلم
+          <span class="enola-highlight">
+            Enola Holmes
+          </span>
+          رو ببینیم
+          و دوتا آهنگ به پلی‌لیستمون اضافه کنیم
+        </div>
 
-    <div class="feature">
-        ✓ غیرقابل‌پیش‌بینی
-    </div>
+        <div class="enola-line"></div>
 
-    <div class="feature">
-        ✓ غیبت خیلی باهاش حال میده
-    </div>
+        <p>
+          if you acsept
+          <br>
+          for your birthday night
+        </p>
 
-    <div class="feature">
-        ✓ اگه بشینه پای بحث تا صب میتونی باهاش حرف بزنی
-    </div>
+      </div>
 
-    <div class="feature">
-        ✓ شب زنده داره نمیخوابه شمال میخوایم ی شب بریم دریا تا صب بشینیم
-    </div>
+    </section>
 
-    <div class="feature">
-        ✓ sweater weather رو دوست داره
-    </div>
 
-    <div class="feature">
-        ✓ پایه فیلمه چند سال دیگه قراره شبا باهم کلی فیلم ببینیم اگه افتخار بده البته
-    </div>
+    <!-- ===================================================
+         GALLERY
+    =================================================== -->
 
-    <div class="feature">
-        ✓ صلیقش خیلی خوبه
-    </div>
+    <section class="gallery">
 
-    <div class="feature">
-        ✓ درمورد ویلا تخت ۲ نفره دار نظری نداره
-    </div>
+      <div class="gallery-heading reveal">
 
-    <div class="feature">
-        ✓ باهم ی پلی لیست ساختیم تو دنیا پیدا نمیشه
-    </div>
+        <h2>
+          Our little memories
+        </h2>
 
-    <div class="feature">
-        ✓ قدش خوراک دست انداختن رو شونشه ولی فکنم برای بقل یا بوسیدنش کمر درد میشی که اگه باهات اوکی باشه کی اصن به کمر درده فک میکنه
-    </div>
+        <p>
+          یه گوشه کوچیک از چیزایی که ساختیم
+        </p>
 
-    <div class="feature">
-        ✓ تو کل دنیا شبیهشم پیدا نمیکنی
-    </div>
+      </div>
 
-    <div class="feature">
-        ✓ همه ام دوستش دارن
-    </div>
 
-    <div class="feature center-text">
-        🎂هست🎂
-    </div>
+      <div
+        class="gallery-box reveal"
+        id="galleryBox"
+      >
 
-</div>
-
-</section>
-
-
-<!-- =========================
-     TONIGHT
-========================= -->
-
-<section class="movie-card reveal">
-
-    <h2>
-        امشب
-    </h2>
-
-    <p>
-
-        فیلم
-        <strong>Enola Holmes</strong>
-        رو ببینیم
-
-        <br>
-
-        و دوتا آهنگ هم به پلی لیستمون اضافه کنیم
-
-    </p>
-
-
-    <div class="separator">
-        ✦
-    </div>
-
-
-    <p>
-
-        (چون شب تولدته ممکنه نشه این کارارو همین شب بکنیم
-        پس اگه امشبم نشد فردا شب عملیش میکنیم)
-
-    </p>
-
-</section>
-
-
-<!-- =========================
-     IN THE END
-========================= -->
-
-<section class="ending reveal">
-
-    <div class="small-label">
-        In the end
-    </div>
-
-
-    <p class="ending-text">
-
-        تولدت مبارکمون باشه دوست داشتم ی جور دیگه ی جای دیگه بهت تبریک بگمو تولدتو بگیریم ولی نمیشد
-        البته فعلا نمیشه چند سال دیگه هرکاری خواستیم می‌کنیم ✅️⏳️
-
-    </p>
-
-
-    <div class="ending-main">
-        Happy birthday
-        <br>
-                my one and only
-        <br>
-        coworker
-        <br>
-        ❤️
-    </div>
-
-
-    <div class="ending-sub">
-
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     GALLERY
-========================= -->
-
-<section class="gallery reveal">
-
-    <div class="gallery-title">
-        📸
-    </div>
-
-
-    <div class="gallery-frame">
-
-        <img
-            id="galleryImage"
-            src="photo1.jpg"
-            alt="memory"
+        <div
+          class="gallery-track"
+          id="galleryTrack"
         >
 
-    </div>
+          <div class="photo">
+            <img
+              src="photo1.jpg"
+              alt="memory 1"
+              draggable="false"
+            >
+          </div>
+
+          <div class="photo">
+            <img
+              src="photo2.jpg"
+              alt="memory 2"
+              draggable="false"
+            >
+          </div>
+
+          <div class="photo">
+            <img
+              src="photo3.jpg"
+              alt="memory 3"
+              draggable="false"
+            >
+          </div>
+
+          <div class="photo">
+            <img
+              src="photo4.jpg"
+              alt="memory 4"
+              draggable="false"
+            >
+          </div>
+
+          <div class="photo">
+            <img
+              src="photo5.jpg"
+              alt="memory 5"
+              draggable="false"
+            >
+          </div>
+
+          <div class="photo">
+            <img
+              src="photo6.jpg"
+              alt="memory 6"
+              draggable="false"
+            >
+          </div>
+
+        </div>
 
 
-    <div class="gallery-controls">
-
-        <button id="prev">
-            قبلی
+        <button
+          class="gallery-arrow gallery-prev"
+          id="prevBtn"
+          aria-label="عکس قبلی"
+        >
+          ‹
         </button>
 
-        <button id="next">
-            بعدی
+        <button
+          class="gallery-arrow gallery-next"
+          id="nextBtn"
+          aria-label="عکس بعدی"
+        >
+          ›
         </button>
 
-    </div>
+      </div>
 
 
-    <div
-        class="gallery-dots"
+      <div
+        class="dots"
         id="dots"
-    ></div>
+      ></div>
 
-</section>
-
-</main>
+    </section>
 
 
-<script>
+    <!-- ===================================================
+         MUSIC BOX
+    =================================================== -->
 
-/* =========================
-   MUSIC
-========================= */
+    <section class="music-section">
 
-const audio =
-    document.getElementById("birthdaySong");
+      <div
+        class="music-box reveal"
+        id="musicBox"
+      >
 
-const progress =
-    document.getElementById("musicProgress");
+        <button
+          class="music-center"
+          id="musicCenter"
+          aria-label="پخش یا توقف موسیقی"
+        >
 
+          <div class="moon"></div>
 
-audio.volume = 0.35;
+          <span
+            class="music-play-icon"
+            id="musicPlayIcon"
+          >
+            ▶
+          </span>
 
-
-/*
-   تلاش برای autoplay
-*/
-
-window.addEventListener("load", () => {
-
-    audio.play().catch(() => {});
-
-});
-
-
-/*
-   fallback برای موبایل
-*/
-
-document.addEventListener(
-    "click",
-    () => {
-
-        if(audio.paused){
-
-            audio.play().catch(() => {});
-
-        }
-
-    },
-    {once:true}
-);
+        </button>
 
 
-/*
-   progress
-*/
+        <div
+          class="music-progress"
+          id="musicProgress"
+          aria-label="نوار پیشرفت موسیقی"
+        >
 
-audio.addEventListener(
-    "timeupdate",
-    () => {
+          <div
+            class="music-progress-fill"
+            id="musicProgressFill"
+          ></div>
 
-        if(!audio.duration)
-            return;
+        </div>
 
-        const percent =
-            (audio.currentTime /
-            audio.duration) * 100;
+      </div>
 
-        progress.style.width =
-            percent + "%";
+    </section>
+
+
+    <!-- ===================================================
+         END
+    =================================================== -->
+
+    <section class="ending reveal">
+
+      <div class="ending-line"></div>
+
+      <p>
+        دوست داشتم ی جور دیگه ی جای دیگه بهت تبریک بگم
+        و تولدتو بگیریم که فعلا نمیتونیم
+      </p>
+
+      <strong>
+        Happy birthday ❤️
+      </strong>
+
+      <div class="footer-star">
+        ✦
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    /* =====================================================
+       STAR FIELD
+    ===================================================== */
+
+    const canvas =
+      document.getElementById("space");
+
+    const ctx =
+      canvas.getContext("2d");
+
+    let stars = [];
+
+    let width = 0;
+    let height = 0;
+
+    function resizeCanvas() {
+
+      const ratio =
+        Math.min(
+          window.devicePixelRatio || 1,
+          2
+        );
+
+      width =
+        canvas.width =
+        window.innerWidth * ratio;
+
+      height =
+        canvas.height =
+        window.innerHeight * ratio;
+
+      canvas.style.width =
+        window.innerWidth + "px";
+
+      canvas.style.height =
+        window.innerHeight + "px";
+
+      ctx.setTransform(
+        ratio,
+        0,
+        0,
+        ratio,
+        0,
+        0
+      );
+
+      createStars();
 
     }
-);
 
 
-/* =========================
-   REVEAL
-========================= */
+    function createStars() {
 
-const observer =
-    new IntersectionObserver(
+      stars = [];
+
+      const count =
+        Math.min(
+          150,
+          Math.floor(window.innerWidth / 7)
+        );
+
+      for (
+        let i = 0;
+        i < count;
+        i++
+      ) {
+
+        stars.push({
+
+          x:
+            Math.random() *
+            window.innerWidth,
+
+          y:
+            Math.random() *
+            window.innerHeight,
+
+          size:
+            Math.random() * 1.25 + .2,
+
+          opacity:
+            Math.random() * .55 + .12,
+
+          speed:
+            Math.random() * .008 + .002,
+
+          phase:
+            Math.random() *
+            Math.PI *
+            2
+
+        });
+
+      }
+
+    }
+
+
+    function drawStars(time = 0) {
+
+      ctx.clearRect(
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight
+      );
+
+      stars.forEach(star => {
+
+        const opacity =
+          star.opacity +
+          Math.sin(
+            time *
+            star.speed +
+            star.phase
+          ) * .12;
+
+        ctx.beginPath();
+
+        ctx.arc(
+          star.x,
+          star.y,
+          star.size,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(255,255,255,${Math.max(.05, opacity)})`;
+
+        ctx.fill();
+
+      });
+
+      requestAnimationFrame(drawStars);
+
+    }
+
+
+    window.addEventListener(
+      "resize",
+      resizeCanvas
+    );
+
+    resizeCanvas();
+
+    requestAnimationFrame(drawStars);
+
+
+    /* =====================================================
+       INTRO
+    ===================================================== */
+
+    const intro =
+      document.getElementById("intro");
+
+    const enterBtn =
+      document.getElementById("enterBtn");
+
+
+    function unlockIntro() {
+
+      document.body.classList.remove(
+        "intro-locked"
+      );
+
+      intro.classList.add("hidden");
+
+    }
+
+
+    /* =====================================================
+       MUSIC
+    ===================================================== */
+
+    const audio =
+      document.getElementById("audio");
+
+    const musicControl =
+      document.getElementById("musicControl");
+
+    const musicCenter =
+      document.getElementById("musicCenter");
+
+    const musicSymbol =
+      document.getElementById("musicSymbol");
+
+    const musicPlayIcon =
+      document.getElementById("musicPlayIcon");
+
+    const musicProgress =
+      document.getElementById("musicProgress");
+
+    const musicProgressFill =
+      document.getElementById("musicProgressFill");
+
+
+    function updateMusicUI() {
+
+      const isPlaying =
+        !audio.paused &&
+        !audio.ended;
+
+      musicControl.classList.toggle(
+        "playing",
+        isPlaying
+      );
+
+      musicCenter.classList.toggle(
+        "playing",
+        isPlaying
+      );
+
+      musicSymbol.textContent =
+        isPlaying
+          ? "Ⅱ"
+          : "▶";
+
+      musicPlayIcon.textContent =
+        isPlaying
+          ? "Ⅱ"
+          : "▶";
+
+    }
+
+
+    async function playMusic() {
+
+      try {
+
+        await audio.play();
+
+        updateMusicUI();
+
+      } catch (error) {
+
+        updateMusicUI();
+
+      }
+
+    }
+
+
+    function toggleMusic() {
+
+      if (audio.paused) {
+
+        playMusic();
+
+      } else {
+
+        audio.pause();
+
+        updateMusicUI();
+
+      }
+
+    }
+
+
+    enterBtn.addEventListener(
+      "click",
+      () => {
+
+        unlockIntro();
+
+        playMusic();
+
+      }
+    );
+
+
+    musicControl.addEventListener(
+      "click",
+      toggleMusic
+    );
+
+
+    musicCenter.addEventListener(
+      "click",
+      toggleMusic
+    );
+
+
+    audio.addEventListener(
+      "play",
+      updateMusicUI
+    );
+
+
+    audio.addEventListener(
+      "pause",
+      updateMusicUI
+    );
+
+
+    audio.addEventListener(
+      "ended",
+      updateMusicUI
+    );
+
+
+    /* =====================================================
+       MUSIC PROGRESS
+    ===================================================== */
+
+    audio.addEventListener(
+      "timeupdate",
+      () => {
+
+        if (
+          !audio.duration ||
+          !isFinite(audio.duration)
+        ) {
+          return;
+        }
+
+        const progress =
+          (
+            audio.currentTime /
+            audio.duration
+          ) * 100;
+
+        musicProgressFill.style.width =
+          `${Math.min(
+            100,
+            Math.max(0, progress)
+          )}%`;
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        musicProgressFill.style.width =
+          "0%";
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "ended",
+      () => {
+
+        musicProgressFill.style.width =
+          "100%";
+
+        updateMusicUI();
+
+      }
+    );
+
+
+    /* =====================================================
+       CLICKABLE PROGRESS BAR
+    ===================================================== */
+
+    musicProgress.addEventListener(
+      "click",
+      event => {
+
+        if (
+          !audio.duration ||
+          !isFinite(audio.duration)
+        ) {
+          return;
+        }
+
+        const rect =
+          musicProgress.getBoundingClientRect();
+
+        const position =
+          Math.min(
+            1,
+            Math.max(
+              0,
+              (
+                event.clientX -
+                rect.left
+              ) / rect.width
+            )
+          );
+
+        audio.currentTime =
+          position *
+          audio.duration;
+
+      }
+    );
+
+
+    /* =====================================================
+       AUTOPLAY ATTEMPT
+    ===================================================== */
+
+    window.addEventListener(
+      "load",
+      () => {
+
+        audio.volume = .72;
+
+        playMusic();
+
+      }
+    );
+
+
+    let firstInteractionDone = false;
+
+
+    function firstInteraction() {
+
+      if (firstInteractionDone) {
+        return;
+      }
+
+      firstInteractionDone = true;
+
+      if (audio.paused) {
+        playMusic();
+      }
+
+      window.removeEventListener(
+        "pointerdown",
+        firstInteraction
+      );
+
+      window.removeEventListener(
+        "keydown",
+        firstInteraction
+      );
+
+    }
+
+
+    window.addEventListener(
+      "pointerdown",
+      firstInteraction,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "keydown",
+      firstInteraction
+    );
+
+
+    /* =====================================================
+       REVEAL
+    ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const observer =
+      new IntersectionObserver(
         entries => {
 
-            entries.forEach(
-                entry => {
+          entries.forEach(entry => {
 
-                    if(
-                        entry.isIntersecting
-                    ){
+            if (
+              entry.isIntersecting
+            ) {
 
-                        entry.target
-                            .classList
-                            .add("visible");
+              entry.target.classList.add(
+                "visible"
+              );
 
-                    }
+            }
 
-                }
-            );
+          });
 
         },
         {
-            threshold:.12
+          threshold: .12
         }
+      );
+
+
+    revealElements.forEach(
+      element =>
+        observer.observe(element)
     );
 
 
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        element =>
-            observer.observe(element)
-    );
+    /* =====================================================
+       GALLERY
+    ===================================================== */
+
+    const track =
+      document.getElementById("galleryTrack");
+
+    const prevBtn =
+      document.getElementById("prevBtn");
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const dotsContainer =
+      document.getElementById("dots");
+
+    const totalPhotos = 6;
+
+    let currentPhoto = 0;
 
 
-/* =========================
-   GALLERY
-========================= */
+    for (
+      let i = 0;
+      i < totalPhotos;
+      i++
+    ) {
 
-const photos = [
+      const dot =
+        document.createElement("span");
 
-    "photo1.jpg",
-    "photo2.jpg",
-    "photo3.jpg",
-    "photo4.jpg",
-    "photo5.jpg",
-    "photo6.jpg"
+      dot.className =
+        "dot" +
+        (
+          i === 0
+            ? " active"
+            : ""
+        );
 
-];
+      dot.setAttribute(
+        "aria-label",
+        `عکس ${i + 1}`
+      );
 
+      dot.addEventListener(
+        "click",
+        () => {
 
-let currentPhoto = 0;
+          currentPhoto = i;
 
+          updateGallery();
 
-const galleryImage =
-    document.getElementById(
-        "galleryImage"
-    );
+        }
+      );
 
-
-const dots =
-    document.getElementById("dots");
-
-
-/*
-   dots
-*/
-
-photos.forEach(
-    (_,index) => {
-
-        const dot =
-            document.createElement("div");
-
-        dot.className =
-            "dot" +
-            (
-                index === 0
-                ? " active"
-                : ""
-            );
-
-        dots.appendChild(dot);
+      dotsContainer.appendChild(dot);
 
     }
-);
 
 
-/*
-   gallery update
-*/
-
-function updateGallery(direction){
-
-    galleryImage.style.opacity =
-        "0";
-
-    galleryImage.style.transform =
-        direction === "next"
-        ? "translateX(35px)"
-        : "translateX(-35px)";
+    const dots =
+      [...dotsContainer.children];
 
 
-    setTimeout(
-        () => {
+    function updateGallery() {
 
-            galleryImage.src =
-                photos[currentPhoto];
+      track.style.transform =
+        `translateX(-${currentPhoto * 100}%)`;
 
+      dots.forEach(
+        (dot, index) => {
 
-            galleryImage.style.opacity =
-                "1";
-
-
-            galleryImage.style.transform =
-                "translateX(0)";
-
-
-            document
-                .querySelectorAll(".dot")
-                .forEach(
-                    (dot,index) => {
-
-                        dot.classList.toggle(
-                            "active",
-                            index === currentPhoto
-                        );
-
-                    }
-                );
-
-        },
-        220
-    );
-
-}
-
-
-/* next */
-
-document
-    .getElementById("next")
-    .addEventListener(
-        "click",
-        () => {
-
-            currentPhoto =
-                (
-                    currentPhoto + 1
-                ) %
-                photos.length;
-
-            updateGallery("next");
+          dot.classList.toggle(
+            "active",
+            index === currentPhoto
+          );
 
         }
+      );
+
+    }
+
+
+    nextBtn.addEventListener(
+      "click",
+      () => {
+
+        currentPhoto =
+          (
+            currentPhoto + 1
+          ) %
+          totalPhotos;
+
+        updateGallery();
+
+      }
     );
 
 
-/* previous */
+    prevBtn.addEventListener(
+      "click",
+      () => {
 
-document
-    .getElementById("prev")
-    .addEventListener(
-        "click",
-        () => {
+        currentPhoto =
+          (
+            currentPhoto -
+            1 +
+            totalPhotos
+          ) %
+          totalPhotos;
 
-            currentPhoto =
-                (
-                    currentPhoto -
-                    1 +
-                    photos.length
-                ) %
-                photos.length;
+        updateGallery();
 
-            updateGallery("prev");
-
-        }
+      }
     );
 
 
-/* =========================
-   SWIPE
-========================= */
+    /* =====================================================
+       SWIPE
+    ===================================================== */
 
-let touchStartX = 0;
+    const galleryBox =
+      document.getElementById("galleryBox");
 
-let touchEndX = 0;
-
-
-const gallery =
-    document.querySelector(
-        ".gallery-frame"
-    );
+    let touchStartX = 0;
+    let touchEndX = 0;
 
 
-gallery.addEventListener(
-    "touchstart",
-    event => {
+    galleryBox.addEventListener(
+      "touchstart",
+      event => {
 
         touchStartX =
-            event.changedTouches[0]
+          event.changedTouches[0]
             .screenX;
 
-    },
-    {
-        passive:true
-    }
-);
+      },
+      {
+        passive: true
+      }
+    );
 
 
-gallery.addEventListener(
-    "touchend",
-    event => {
+    galleryBox.addEventListener(
+      "touchend",
+      event => {
 
         touchEndX =
-            event.changedTouches[0]
+          event.changedTouches[0]
             .screenX;
 
-
         const distance =
-            touchStartX -
-            touchEndX;
+          touchEndX -
+          touchStartX;
 
-
-        if(
-            Math.abs(distance) < 45
-        )
-            return;
-
-
-        if(distance > 0){
-
-            currentPhoto =
-                (
-                    currentPhoto + 1
-                ) %
-                photos.length;
-
-            updateGallery("next");
-
+        if (
+          Math.abs(distance) < 40
+        ) {
+          return;
         }
-        else{
 
-            currentPhoto =
-                (
-                    currentPhoto -
-                    1 +
-                    photos.length
-                ) %
-                photos.length;
+        if (distance < 0) {
 
-            updateGallery("prev");
+          currentPhoto =
+            (
+              currentPhoto + 1
+            ) %
+            totalPhotos;
+
+        } else {
+
+          currentPhoto =
+            (
+              currentPhoto -
+              1 +
+              totalPhotos
+            ) %
+            totalPhotos;
 
         }
 
-    },
-    {
-        passive:true
-    }
-);
+        updateGallery();
 
-</script>
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    /* =====================================================
+       KEYBOARD
+    ===================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+
+          currentPhoto =
+            (
+              currentPhoto + 1
+            ) %
+            totalPhotos;
+
+          updateGallery();
+
+        }
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+
+          currentPhoto =
+            (
+              currentPhoto -
+              1 +
+              totalPhotos
+            ) %
+            totalPhotos;
+
+          updateGallery();
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       INITIAL UI
+    ===================================================== */
+
+    updateMusicUI();
+
+    updateGallery();
+
+  </script>
 
 </body>
-
-
 </html>
