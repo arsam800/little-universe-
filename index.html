@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Vazirmatn',sans-serif;
+    background:#02030a;
+    color:#f8eef5;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NIGHT SKY BACKGROUND
+========================= */
+
+.sky{
+    position:fixed;
+    inset:0;
+    z-index:-10;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(104,77,151,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 82% 35%,
+            rgba(172,91,139,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(76,69,138,.16),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #02030a 0%,
+            #060712 48%,
+            #08060f 100%
+        );
+}
+
+/* stars */
+
+.stars,
+.stars2,
+.stars3{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.stars{
+    opacity:.75;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95) 0 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.65) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        97px 113px,
+        157px 181px;
+
+    background-position:
+        10px 20px,
+        50px 70px;
+}
+
+.stars2{
+    opacity:.45;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(178, 161, 237, 0.85) 0 1px,
+            transparent 1.6px
+        );
+
+    background-size:211px 197px;
+    background-position:90px 30px;
+}
+
+.stars3{
+    opacity:.28;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,210,240,.85) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:277px 251px;
+    background-position:30px 100px;
+}
+
+/* moon */
+
+.moon{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    top:7%;
+    left:9%;
+
+    border-radius:50%;
+
+    background:#f8f0dd;
+
+    opacity:.88;
+
+    box-shadow:
+        0 0 25px rgba(255,247,220,.24),
+        0 0 70px rgba(255,245,210,.10);
+}
+
+.moon::after{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    left:27px;
+    top:-9px;
+
+    border-radius:50%;
+
+    background:#02030a;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:100%;
+    max-width:760px;
+
+    margin:auto;
+
+    padding:
+        45px 16px
+        140px;
+}
+
+section{
+    margin-bottom:40px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:78vh;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.small-label{
+    font-size:10px;
+    letter-spacing:4px;
+
+    color:#aaa0b0;
+
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:
+        clamp(32px,9vw,60px);
+
+    line-height:1.3;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            110deg,
+            #fff,
+            #e4cde0,
+            #c6bee8,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-line{
+    width:70px;
+    height:1px;
+
+    margin:24px auto;
+
+    background:
+        rgba(255,255,255,.3);
+}
+
+.hero p{
+    font-size:13px;
+    line-height:2;
+
+    color:#c4b9c4;
+}
+
+
+/* =========================
+   TEXT CARD
+========================= */
+
+.text-card{
+    padding:21px 18px;
+
+    border-radius:22px;
+
+    border:
+        1px solid rgba(255,255,255,.09);
+
+    background:
+        rgba(255,255,255,.035);
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.035),
+        0 20px 60px rgba(0,0,0,.15);
+}
+
+.text-card p{
+    font-size:13px;
+    line-height:2.15;
+
+    color:#eee5ec;
+}
+
+.separator{
+    text-align:center;
+
+    color:#a99aaa;
+
+    letter-spacing:5px;
+
+    font-size:12px;
+
+    margin:17px 0;
+}
+
+
+/* =========================
+   PASS
+========================= */
+
+.transition{
+    text-align:center;
+    padding:4px 0;
+}
+
+.transition span{
+    display:block;
+
+    font-size:20px;
+    line-height:1.75;
+
+    font-weight:700;
+}
+
+.transition span:nth-child(1){
+    color:#d7b7cd;
+}
+
+.transition span:nth-child(2){
+    color:#beb5d3;
+}
+
+.transition span:nth-child(3){
+    color:#e2c8d9;
+}
+
+.transition .separator{
+    margin-top:8px;
+}
+
+
+/* =========================
+   FEATURE BOX
+========================= */
+
+.feature-shell{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    padding:
+        28px 14px
+        65px;
+
+    color:#342933;
+
+    background:
+        radial-gradient(
+            circle at 20% 8%,
+            rgba(255,255,255,.40),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(188,144,179,.17),
+            transparent 30%
+        ),
+        linear-gradient(
+            150deg,
+            #e9c9d8 0%,
+            #f2d9df 30%,
+            #f1e2d6 68%,
+            #eee8d9 100%
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.32),
+        inset 0 1px rgba(255,255,255,.7);
+}
+
+.feature-title{
+    text-align:center;
+
+    font-size:19px;
+
+    line-height:1.85;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+}
+
+
+/* feature cards */
+
+.feature-list{
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.feature{
+    padding:
+        10px 12px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.36);
+
+    border:
+        1px solid rgba(92,60,79,.08);
+
+    font-size:12px;
+
+    line-height:1.9;
+
+    box-shadow:
+        0 7px 20px rgba(79,50,68,.06);
+}
+
+
+/* =========================
+   SPAM TEXT
+========================= */
+
+.spam-text{
+    margin-top:22px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    line-height:2;
+
+    font-weight:600;
+
+    padding:
+        12px 10px;
+
+    border-radius:16px;
+
+    background:
+        rgba(255,255,255,.28);
+}
+
+
+/* =========================
+   LONG EMPTY PATH
+========================= */
+
+.long-path{
+    position:relative;
+
+    height:2200px;
+
+    margin-top:5px;
+
+    width:100%;
+}
+
+
+/*
+    فقط مسیر در این قسمت وجود دارد.
+    هیچ ویژگی‌ای وسط مسیر نیست.
+*/
+
+.path-svg{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:visible;
+
+    pointer-events:none;
+}
+
+.path-line{
+    fill:none;
+
+    stroke:
+        url(#rainbowGradient);
+
+    stroke-width:3.5;
+
+    stroke-linecap:round;
+
+    stroke-dasharray:
+        11 10;
+
+    opacity:.82;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(205,160,215,.5)
+        );
+}
+
+
+/* arrow tip */
+
+.path-arrow{
+    fill:#d7a8c8;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(215,168,200,.45)
+        );
+}
+
+
+/* =========================
+   REMAINING FEATURES
+========================= */
+
+.remaining-features{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.remaining-features .feature{
+    opacity:0;
+
+    transform:
+        translateY(20px);
+
+    animation:
+        appear .8s ease forwards;
+}
+
+.remaining-features .feature:nth-child(1){animation-delay:.05s}
+.remaining-features .feature:nth-child(2){animation-delay:.10s}
+.remaining-features .feature:nth-child(3){animation-delay:.15s}
+.remaining-features .feature:nth-child(4){animation-delay:.20s}
+.remaining-features .feature:nth-child(5){animation-delay:.25s}
+.remaining-features .feature:nth-child(6){animation-delay:.30s}
+.remaining-features .feature:nth-child(7){animation-delay:.35s}
+.remaining-features .feature:nth-child(8){animation-delay:.40s}
+.remaining-features .feature:nth-child(9){animation-delay:.45s}
+.remaining-features .feature:nth-child(10){animation-delay:.50s}
+.remaining-features .feature:nth-child(11){animation-delay:.55s}
+.remaining-features .feature:nth-child(12){animation-delay:.60s}
+.remaining-features .feature:nth-child(13){animation-delay:.65s}
+.remaining-features .feature:nth-child(14){animation-delay:.70s}
+.remaining-features .feature:nth-child(15){animation-delay:.75s}
+.remaining-features .feature:nth-child(16){animation-delay:.80s}
+.remaining-features .feature:nth-child(17){animation-delay:.85s}
+
+
+/* =========================
+   MOVIE
+========================= */
+
+.movie-card{
+    padding:
+        27px 19px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(235,201,220,.09),
+            rgba(190,181,220,.07)
+        );
+}
+
+.movie-card h2{
+    font-size:25px;
+
+    margin-bottom:12px;
+}
+
+.movie-card p{
+    font-size:13px;
+
+    color:#d5cbd4;
+
+    line-height:2.1;
+}
+
+
+/* =========================
+   END
+========================= */
+
+.ending{
+    text-align:center;
+
+    padding:
+        28px 10px
+        15px;
+}
+
+.ending-text{
+    font-size:13px;
+
+    color:#ded2dc;
+
+    line-height:2.25;
+}
+
+.ending-main{
+    margin-top:32px;
+
+    font-size:
+        clamp(27px,7vw,45px);
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            120deg,
+            #fff,
+            #e9c9df,
+            #cfc4ea,
+            #fff
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.ending-sub{
+    margin-top:9px;
+
+    direction:ltr;
+
+    font-family:Georgia,serif;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#e7dce4;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    text-align:center;
+}
+
+.gallery-title{
+    font-size:19px;
+
+    margin-bottom:17px;
+}
+
+.gallery-frame{
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4/5;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.30);
+}
+
+.gallery-frame img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+        transform .45s ease,
+        opacity .45s ease;
+}
+
+.gallery-controls{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:13px;
+}
+
+.gallery-controls button{
+    border:
+        1px solid rgba(255,255,255,.14);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:#eee;
+
+    border-radius:50px;
+
+    padding:
+        9px 17px;
+
+    font-family:inherit;
+
+    cursor:pointer;
+}
+
+.gallery-dots{
+    display:flex;
+
+    justify-content:center;
+
+    gap:6px;
+
+    margin-top:12px;
+}
+
+.dot{
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+.dot.active{
+    width:17px;
+
+    border-radius:10px;
+
+    background:#e4c8dc;
+}
+
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+
+    transform:
+        translateY(22px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================
+   MUSIC BAR
+========================= */
+
+.music-bar{
+    position:fixed;
+
+    z-index:1000;
+
+    left:50%;
+    bottom:13px;
+
+    transform:
+        translateX(-50%);
+
+    width:min(92%,470px);
+
+    padding:
+        9px 13px;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    border-radius:22px;
+
+    background:
+        rgba(10,9,17,.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.4);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.music-disc{
+    width:36px;
+    height:36px;
+
+    flex:none;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:17px;
+}
+
+.music-info{
+    flex:1;
+
+    min-width:0;
+}
+
+.music-title{
+    font-size:11px;
+
+    color:#fff;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.music-artist{
+    font-size:9px;
+
+    color:#aaa0aa;
+
+    margin-top:2px;
+}
+
+.music-line{
+    height:2px;
+
+    width:100%;
+
+    margin-top:6px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border-radius:5px;
+
+    overflow:hidden;
+}
+
+.music-progress{
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d8a1c8,
+            #b9a7e8,
+            #d7c1dd
+        );
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes appear{
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:520px){
+
+    main{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .hero{
+        min-height:75vh;
+    }
+
+    .moon{
+        width:78px;
+        height:78px;
+
+        left:8%;
+        top:8%;
+    }
+
+    .moon::after{
+        width:78px;
+        height:78px;
+
+        left:21px;
+        top:-7px;
+    }
+
+    .text-card{
+        padding:
+            18px 15px;
+    }
+
+    .text-card p{
+        font-size:12.2px;
+        line-height:2.1;
+    }
+
+    .feature-shell{
+        padding-left:11px;
+        padding-right:11px;
+
+        border-radius:27px;
+    }
+
+    .feature{
+        font-size:11.5px;
+    }
+
+    /*
+       مسیر عمداً بسیار طولانی است.
+       روی موبایل حدود 3 تا 4 بار
+       اسکرول قبل از ویژگی‌های بعدی.
+    */
+
+    .long-path{
+        height:2200px;
+    }
+
+    .path-svg{
+        height:2200px;
+    }
+
+}
+
+
+/* desktop */
+
+@media(min-width:900px){
+
+    .feature-shell{
+        padding-left:28px;
+        padding-right:28px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- NIGHT SKY -->
+
+<div class="sky">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <div class="moon"></div>
+</div>
+
+
+<!-- MUSIC -->
+
+<audio id="birthdaySong">
+    <source
+        src="birthday-song.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<div class="music-bar">
+
+    <div class="music-disc">
+        ♫
+    </div>
+
+    <div class="music-info">
+
+        <div class="music-title">
+            The One That Got Away
+        </div>
+
+        <div class="music-artist">
+            Katy Perry
+        </div>
+
+        <div class="music-line">
+            <div
+                class="music-progress"
+                id="musicProgress"
+            ></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero reveal">
+
+    <div class="small-label">
+        ONE PARTICULAR DAY
+    </div>
+
+    <h1>
+        Happy Birthday
+    </h1>
+
+    <div class="hero-line"></div>
+
+    <p>
+        امروز یه روز معمولی نیست.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     ORIGINAL TEXT
+========================= -->
+
+<section class="text-card reveal">
+
+<p>
+
+امروز تنها روز ساله که تولد تنها همکارمه🥷
+
+<br>
+
+از سرنوشت ممنونم که همچین همکاریو اورد تو زندگیم که باعث شد انقد خاطره های خوبی که فقط خودمون میفهمیمشون بسازیم❤️
+انقد فیلم ببینیمو تو یونیورس هاشون زندگی کنیم🧑‍🦽
+انقد حرف بزنیم🗣
+اون پلی لیست شاهکارو درست کنیم❤️‍🔥
+نقاشی بکشیم🧽⭐️
+به گربه چیپس بدیم🫏
+بگیم بخندیمو اون عکسای خفنو بگیریم🤳🦧
+
+</p>
+
+
+<div class="separator">
+🚥
+</div>
+
+
+<p>
+
+امیدوارم امسال از اون سالایی بشه برات که وقتی چند سال دیگه بهش فکر میکنی کلی خاطره خوب ازش یادت بیاد
+
+<br><br>
+
+میدونم ری اکتت الان چیه اگه ادامه بدم همینو می‌رسیم به اونجا که میگن ایشالا صد سال زندگی کنی با هزار تا استیکر😍
+به هرچی میخوای برسیو همینا که فامیلاو دوستا برا تبریک تولد میگن که منم ۳ روز دیگه درگیرشم🖤
+
+</p>
+
+</section>
+
+
+<!-- =========================
+     PASSS
+========================= -->
+
+<section class="transition reveal">
+
+    <span>Passs</span>
+
+    <span>متوجهم</span>
+
+    <span>Anywayyy</span>
+
+    <div class="separator">
+        ما میریم سراغ کار خودمون
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="feature-shell reveal">
+
+
+<div class="feature-title">
+
+افتخار میدید
+<br>
+به مناسبت
+<br>
+تنها شبی که
+<br>
+تولد
+<br>
+بهترین شاگردم
+<br>
+و تنها همکارم
+<br>
+که
+
+</div>
+
+
+<!-- FIRST FEATURES -->
+
+<div class="feature-list">
+
+    <div class="feature">
+        ✓ خیلی خوشگله
+    </div>
+
+    <div class="feature">
+        ✓ استایلش خاصه
+    </div>
+
+    <div class="feature">
+        ✓ پر انرژیه بعضی وقتام جنازه
+    </div>
+
+    <div class="feature">
+        ✓ بتمنه نمیخوابه
+    </div>
+
+    <div class="feature">
+        ✓ پایه عشقوحاله
+    </div>
+
+    <div class="feature">
+        ✓ به شدت قویه درحد بلند کردن گونی هم وزن خودش
+    </div>
+
+    <div class="feature">
+        ✓ بک‌های تخریب کننده میده
+    </div>
+
+    <div class="feature">
+        ✓ باهوشه
+    </div>
+
+    <div class="feature">
+        ✓ دوست داشتنیه
+    </div>
+
+    <div class="feature">
+        ✓ پرروم هست
+    </div>
+
+    <div class="feature">
+        ✓ خوراک دیوونه بازیه
+    </div>
+
+    <div class="feature">
+        ✓ شریک جرممه
+    </div>
+
+</div>
+
+
+<!-- SPAM TEXT -->
+
+<div class="spam-text">
+
+✓ ی گیف خطرناکو اسپم میده
+<br>
+(همینجا انتقام اون ۴۳۸ تا اسپمو میگیرم ازت)
+
+</div>
+
+
+<!-- =========================
+     EMPTY LONG PATH
+========================= -->
+
+<div class="long-path">
+
+<svg
+    class="path-svg"
+    viewBox="0 0 500 2200"
+    preserveAspectRatio="none"
+>
+
+<defs>
+
+<linearGradient
+    id="rainbowGradient"
+    x1="0%"
+    y1="0%"
+    x2="100%"
+    y2="100%"
+>
+
+    <stop
+        offset="0%"
+        stop-color="#d28abb"
+    />
+
+    <stop
+        offset="20%"
+        stop-color="#a993d5"
+    />
+
+    <stop
+        offset="42%"
+        stop-color="#82a9d5"
+    />
+
+    <stop
+        offset="65%"
+        stop-color="#c49dcc"
+    />
+
+    <stop
+        offset="85%"
+        stop-color="#dfa5bd"
+    />
+
+    <stop
+        offset="100%"
+        stop-color="#e8c2c9"
+    />
+
+</linearGradient>
+
+</defs>
+
+
+<!--
+    مسیر از دقیقاً زیر متن اسپم شروع می‌شود.
+    در این قسمت هیچ feature دیگری وجود ندارد.
+-->
+
+<path
+    class="path-line"
+    d="
+        M250 0
+
+        C250 100
+        95 135
+        105 280
+
+        C115 425
+        405 380
+        395 545
+
+        C385 700
+        90 650
+        105 820
+
+        C120 990
+        415 930
+        395 1100
+
+        C375 1270
+        90 1210
+        105 1390
+
+        C120 1570
+        415 1500
+        395 1680
+
+        C375 1850
+        120 1790
+        250 2190
+    "
+/>
+
+
+<!-- arrow head at the end -->
+
+<polygon
+    class="path-arrow"
+    points="
+        250,2200
+        238,2172
+        250,2182
+        262,2172
+    "
+/>
+
+</svg>
+
+</div>
+
+
+<!-- =========================
+     REMAINING FEATURES
+========================= -->
+
+<div class="remaining-features">
+
+    <div class="feature">
+        ✓ خلاف کاره
+    </div>
+
+    <div class="feature">
+        ✓ شنا بلده میخوایم مسابقه بزاریم شمال🏊‍♂️
+    </div>
+
+    <div class="feature">
+        ✓ نقاشیش تو اینستا شاهکاره
+    </div>
+
+    <div class="feature">
+        ✓ فرق عقابو روحو تشخیص نمیده
+    </div>
+
+    <div class="feature">
+        ✓ غیرقابل‌پیش‌بینی
+    </div>
+
+    <div class="feature">
+        ✓ غیبت خیلی باهاش حال میده
+    </div>
+
+    <div class="feature">
+        ✓ اگه بشینه پای بحث تا صب میتونی باهاش حرف بزنی
+    </div>
+
+    <div class="feature">
+        ✓ شب زنده داره نمیخوابه شمال میخوایم ی شب بریم دریا تا صب بشینیم
+    </div>
+
+    <div class="feature">
+        ✓ sweater weather رو دوست داره
+    </div>
+
+    <div class="feature">
+        ✓ پایه فیلمه چند سال دیگه قراره شبا باهم کلی فیلم ببینیم اگه افتخار بده البته
+    </div>
+
+    <div class="feature">
+        ✓ صلیقش خیلی خوبه
+    </div>
+
+    <div class="feature">
+        ✓ درمورد ویلا تخت ۲ نفره دار نظری نداره
+    </div>
+
+    <div class="feature">
+        ✓ باهم ی پلی لیست ساختیم تو دنیا پیدا نمیشه
+    </div>
+
+    <div class="feature">
+        ✓ قدش خوراک دست انداختن رو شونشه ولی فکنم برای بقل یا بوسیدنش کمر درد میشی که اگه باهات اوکی باشه کی اصن به کمر درده فک میکنه
+    </div>
+
+    <div class="feature">
+        ✓ تو کل دنیا شبیهشم پیدا نمیکنی
+    </div>
+
+    <div class="feature">
+        ✓ همه ام دوستش دارن
+    </div>
+
+    <div class="feature center-text">
+        🎂هست🎂
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     TONIGHT
+========================= -->
+
+<section class="movie-card reveal">
+
+    <h2>
+        امشب
+    </h2>
+
+    <p>
+
+        فیلم
+        <strong>Enola Holmes</strong>
+        رو ببینیم
+
+        <br>
+
+        و دوتا آهنگ هم به پلی لیستمون اضافه کنیم
+
+    </p>
+
+
+    <div class="separator">
+        ✦
+    </div>
+
+
+    <p>
+
+        (چون شب تولدته ممکنه نشه این کارارو همین شب بکنیم
+        پس اگه امشبم نشد فردا شب عملیش میکنیم)
+
+    </p>
+
+</section>
+
+
+<!-- =========================
+     IN THE END
+========================= -->
+
+<section class="ending reveal">
+
+    <div class="small-label">
+        In the end
+    </div>
+
+
+    <p class="ending-text">
+
+        تولدت مبارکمون باشه دوست داشتم ی جور دیگه ی جای دیگه بهت تبریک بگمو تولدتو بگیریم ولی نمیشد
+        البته فعلا نمیشه چند سال دیگه هرکاری خواستیم می‌کنیم ✅️⏳️
+
+    </p>
+
+
+    <div class="ending-main">
+        Happy birthday
+        <br>
+                my one and only
+        <br>
+        coworker
+        <br>
+        ❤️
+    </div>
+
+
+    <div class="ending-sub">
+
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery reveal">
+
+    <div class="gallery-title">
+        📸
+    </div>
+
+
+    <div class="gallery-frame">
+
+        <img
+            id="galleryImage"
+            src="photo1.jpg"
+            alt="memory"
+        >
+
+    </div>
+
+
+    <div class="gallery-controls">
+
+        <button id="prev">
+            قبلی
+        </button>
+
+        <button id="next">
+            بعدی
+        </button>
+
+    </div>
+
+
+    <div
+        class="gallery-dots"
+        id="dots"
+    ></div>
+
+</section>
+
+</main>
+
+
+<script>
+
+/* =========================
+   MUSIC
+========================= */
+
+const audio =
+    document.getElementById("birthdaySong");
+
+const progress =
+    document.getElementById("musicProgress");
+
+
+audio.volume = 0.35;
+
+
+/*
+   تلاش برای autoplay
+*/
+
+window.addEventListener("load", () => {
+
+    audio.play().catch(() => {});
+
+});
+
+
+/*
+   fallback برای موبایل
+*/
+
+document.addEventListener(
+    "click",
+    () => {
+
+        if(audio.paused){
+
+            audio.play().catch(() => {});
+
+        }
+
+    },
+    {once:true}
+);
+
+
+/*
+   progress
+*/
+
+audio.addEventListener(
+    "timeupdate",
+    () => {
+
+        if(!audio.duration)
+            return;
+
+        const percent =
+            (audio.currentTime /
+            audio.duration) * 100;
+
+        progress.style.width =
+            percent + "%";
+
+    }
+);
+
+
+/* =========================
+   REVEAL
+========================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        element =>
+            observer.observe(element)
+    );
+
+
+/* =========================
+   GALLERY
+========================= */
+
+const photos = [
+
+    "photo1.jpg",
+    "photo2.jpg",
+    "photo3.jpg",
+    "photo4.jpg",
+    "photo5.jpg",
+    "photo6.jpg"
+
+];
+
+
+let currentPhoto = 0;
+
+
+const galleryImage =
+    document.getElementById(
+        "galleryImage"
+    );
+
+
+const dots =
+    document.getElementById("dots");
+
+
+/*
+   dots
+*/
+
+photos.forEach(
+    (_,index) => {
+
+        const dot =
+            document.createElement("div");
+
+        dot.className =
+            "dot" +
+            (
+                index === 0
+                ? " active"
+                : ""
+            );
+
+        dots.appendChild(dot);
+
+    }
+);
+
+
+/*
+   gallery update
+*/
+
+function updateGallery(direction){
+
+    galleryImage.style.opacity =
+        "0";
+
+    galleryImage.style.transform =
+        direction === "next"
+        ? "translateX(35px)"
+        : "translateX(-35px)";
+
+
+    setTimeout(
+        () => {
+
+            galleryImage.src =
+                photos[currentPhoto];
+
+
+            galleryImage.style.opacity =
+                "1";
+
+
+            galleryImage.style.transform =
+                "translateX(0)";
+
+
+            document
+                .querySelectorAll(".dot")
+                .forEach(
+                    (dot,index) => {
+
+                        dot.classList.toggle(
+                            "active",
+                            index === currentPhoto
+                        );
+
+                    }
+                );
+
+        },
+        220
+    );
+
+}
+
+
+/* next */
+
+document
+    .getElementById("next")
+    .addEventListener(
+        "click",
+        () => {
+
+            currentPhoto =
+                (
+                    currentPhoto + 1
+                ) %
+                photos.length;
+
+            updateGallery("next");
+
+        }
+    );
+
+
+/* previous */
+
+document
+    .getElementById("prev")
+    .addEventListener(
+        "click",
+        () => {
+
+            currentPhoto =
+                (
+                    currentPhoto -
+                    1 +
+                    photos.length
+                ) %
+                photos.length;
+
+            updateGallery("prev");
+
+        }
+    );
+
+
+/* =========================
+   SWIPE
+========================= */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+const gallery =
+    document.querySelector(
+        ".gallery-frame"
+    );
+
+
+gallery.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0]
+            .screenX;
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+gallery.addEventListener(
+    "touchend",
+    event => {
+
+        touchEndX =
+            event.changedTouches[0]
+            .screenX;
+
+
+        const distance =
+            touchStartX -
+            touchEndX;
+
+
+        if(
+            Math.abs(distance) < 45
+        )
+            return;
+
+
+        if(distance > 0){
+
+            currentPhoto =
+                (
+                    currentPhoto + 1
+                ) %
+                photos.length;
+
+            updateGallery("next");
+
+        }
+        else{
+
+            currentPhoto =
+                (
+                    currentPhoto -
+                    1 +
+                    photos.length
+                ) %
+                photos.length;
+
+            updateGallery("prev");
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+</script>
+
+</body>
+
+
+</html>
